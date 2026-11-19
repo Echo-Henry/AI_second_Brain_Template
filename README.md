@@ -2,9 +2,27 @@
 
 一套基于 **Markdown + VS Code + Cline + Git** 的轻量级 Agentic RAG 个人第二大脑模板。零数据库开销，数据 100% 本地/私有掌控，可公开分享、可随时 fork 复用。所有文档均为纯 Markdown，配合 Obsidian 等工具可实现语义检索与问答（RAG）；不含任何个人业务数据，可直接公开分享。
 
+![GitHub stars](https://img.shields.io/github/stars/Echo-Henry/AI_second_Brain_Template?style=flat-square&color=blue)
+![Template](https://img.shields.io/badge/GitHub-Template_Repository-2ea44f?style=flat-square)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey?style=flat-square)
+![Stack](https://img.shields.io/badge/Stack-Markdown%20%2B%20Cline%20%2B%20Git%20%2B%20Obsidian-orange?style=flat-square)
+
+> **告别重型向量数据库与复杂的本地环境配置！** 只需纯 Markdown 文件 + VS Code Cline 智能体 + Git，说一句"这是我的学习笔记，你学习一下"，即可实现全自动分类归档、异地双备份与本地语义检索（Agentic RAG）。
+
 > 模板目录与 `01-Tech-Specs` / `02-Troubleshooting` 等历史目录完全解耦，不包含任何个人业务笔记、域名、内网 IP 或密钥，可直接用于公开仓库。
 
 ---
+
+## 工作原理一览（Mermaid 架构图）
+
+```mermaid
+graph LR
+    User["用户输入碎片笔记 / 00-Inbox"] --> Cline["Cline 读取 brain-rules.md"]
+    Cline --> Auto["自动识别领域并结构化清洗"]
+    Auto --> Archive["归档至 01~03 对应目录"]
+    Archive --> Push["自动 Git Push 异地双备份"]
+    Archive --> Index["Obsidian 向量索引 / 语义问答"]
+```
 
 ## 目录结构说明
 
