@@ -21,7 +21,8 @@ graph LR
     Cline --> Auto["自动识别领域并结构化清洗"]
     Auto --> Archive["归档至 01~03 对应目录"]
     Archive --> Push["自动 Git Push 异地双备份"]
-    Archive --> Index["Obsidian 向量索引 / 语义问答"]
+    Push --> Mobile["手机端 Obsidian App 随时随地查阅"]
+    Push --> Index["Obsidian 向量索引 / 语义问答"]
 ```
 
 ## 目录结构说明
@@ -67,7 +68,26 @@ graph LR
 
 ---
 
-## 第三步：进阶扩展（接入 Obsidian 实现本地语义检索与问答）
+## 第三步：进阶扩展
+
+### 1. PC + 手机 App + GitHub 三端自动同步（免费闭环）
+
+**核心架构**：电脑端（VS Code + Cline）负责 AI 自动写入与整理 → GitHub 私有仓库作为云端中转枢纽 → 手机端 Obsidian App 随时随地查阅与记录。
+
+**电脑端配置（Obsidian Git 插件）**：
+
+- 在电脑端 Obsidian 的 `设置 → 第三方插件` 中搜索安装 **`Obsidian Git`** 插件（或继续依赖 Cline 每次归档后的自动 `git push`）。
+- 建议开启 `Auto pull on startup`（启动时自动拉取手机端的新增笔记）与定时自动推送。
+
+**手机端配置（iOS / Android 免费同步方案）**：
+
+- **通用插件方案（推荐）**：在手机端 Obsidian App 中同样安装 **`Obsidian Git`** 插件，填入 GitHub 仓库地址与 Personal Access Token（PAT 个人访问令牌），即可一键双向拉取/推送。
+- **iOS 轻量替代方案**：也可配合 **Working Copy**（Git 客户端）将 GitHub 仓库克隆到手机本地文件夹，再让 Obsidian 直接打开该文件夹。
+- **Android 轻量替代方案**：也可通过 **Termux** 执行 `git clone` 克隆仓库至手机存储，并用 Obsidian 打开对应目录。
+
+**防冲突最佳实践**：确保 `.gitignore` 已忽略 `.obsidian/` 目录，避免手机端和电脑端的界面状态缓存产生 Git 合并冲突。
+
+### 2. 本地语义检索与全库问答（向量 RAG）
 
 当你的知识库笔记积累到数百篇以上时，可以让 **Cline（负责自动整理与写入）** 与 **Obsidian（负责可视化阅读与全库语义问答）** 协同工作：
 
