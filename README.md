@@ -34,6 +34,7 @@ graph LR
 | `02-Troubleshooting/` | 报错记录、踩坑复盘、排错指南 |
 | `03-Templates-Prompts/` | 可复用命令速查表、提示词模板、标准化清单 |
 | `clinerules/brain-rules.md` | 给 AI 的记忆与训练规则（写作规范、归档标准、自动化 SOP） |
+| `clinerules/tutor-mode.md` | 导师模式（苏格拉底式引导 + 费曼验收） |
 
 每个分类目录下均附带 `.gitkeep`，保证空目录可被 Git 追踪。
 
@@ -65,6 +66,15 @@ graph LR
 ### 2. 持续进化你的 AI 规则
 
 按需修改 `clinerules/brain-rules.md` 中的分类偏好与排版规范，AI 会越来越懂你的工作流。
+
+### 3. 开启"导师模式"互动学习与费曼验收
+
+当你想系统学习某个知识点（如 Linux 的 rwx 权限机制、Git 提交规范、Python 异步编程等），直接发送口令 **"开启导师模式，带我一步步搞懂 Linux 的 rwx 权限机制"**，AI 会切换为苏格拉底式导师，通过提问引导、分步拆解、实战出题验收完成教学，学完后再询问是否一键归档。
+
+支持的触发口令示例：
+- `开启导师模式，带我一步步搞懂 Linux 的 rwx 权限机制`
+- `用导师模式考考我：什么是 Git 的 rebase 和 merge 区别？`
+- `开启导师模式，帮我理解 Python 的 asyncio 异步编程`
 
 ---
 
