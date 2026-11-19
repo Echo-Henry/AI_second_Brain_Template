@@ -1,6 +1,6 @@
 # AI 个人第二大脑 · 通用知识库模板
 
-一套基于 **Markdown + VS Code + Cline + Git** 的轻量级 Agentic RAG 个人第二大脑模板。零数据库开销，数据 100% 本地/私有掌控，可公开分享、可随时 fork 复用。
+一套基于 **Markdown + VS Code + Cline + Git** 的轻量级 Agentic RAG 个人第二大脑模板。零数据库开销，数据 100% 本地/私有掌控，可公开分享、可随时 fork 复用。所有文档均为纯 Markdown，配合 Obsidian 等工具可实现语义检索与问答（RAG）；不含任何个人业务数据，可直接公开分享。
 
 > 模板目录与 `01-Tech-Specs` / `02-Troubleshooting` 等历史目录完全解耦，不包含任何个人业务笔记、域名、内网 IP 或密钥，可直接用于公开仓库。
 
@@ -20,30 +20,36 @@
 
 ---
 
-## 3 分钟快速上手
+## 第一步：安装与部署（二选一）
 
-### 方式零：Windows 一键自动部署（推荐小白使用）
-- 下载仓库压缩包解压后，直接双击运行 `setup.bat` 即可全自动完成环境安装、插件配置与仓库初始化。脚本会自动检测并安装 Git、VS Code、Cline 插件，初始化 Git 仓库并绑定您的 GitHub 私有仓库。
-- Mac / Linux 用户请运行 `bash setup.sh`（首次使用前请确保已安装对应包管理器并执行 `chmod +x setup.sh`）。
+### 方案 A：一键全自动安装（推荐新手 / 小白）
 
-### 1. 创建自己的私有仓库
-- **方式 A（推荐）**：直接在 GitHub 上点击仓库右上角 **`Use this template`**，创建一个新的私有仓库，选择本模板作为来源。
-- **方式 B**：克隆本模板仓库后执行 `git clone`，再 `git remote add origin <你的 GitHub 仓库地址>` 关联自己的仓库。
+**Windows 用户**：点击页面右上角 `Code → Download ZIP` 下载压缩包并解压，直接双击运行 `setup.bat`，脚本会自动检测安装 Git、VS Code、Cline 插件并初始化仓库。
 
-### 2. 安装 Cline 插件并配置大模型 API Key
-1. 打开 VS Code → 点击左侧活动栏的 **扩展图标（`Ctrl+Shift+X`）** 搜索 **`Cline`** 并安装。
-2. 启动 Cline 会话，在模型配置中填入你自己的大模型 API Key（如 OpenAI、硅基流动、OpenRouter 等平台），并选择对应模型。
+**Mac / Linux 用户**：在解压目录终端执行 `chmod +x setup.sh && bash setup.sh` 即可全自动完成配置。
 
-### 3. 一句话体验全自动归档与 Git 双备份
-打开 Cline，直接对 Cline 说：
+> **提示**：脚本运行结束后会自动弹出 VS Code，你只需在右侧 Cline 面板填入自己的大模型 API Key 即可直接进入"第二步：开始使用"。
 
-> **"这是我的学习笔记，你学习一下"**
+### 方案 B：GitHub 模板手动部署（推荐开发者）
 
-AI 将自动识别笔记主题，按 SOP 自动归类到 `01-Tech-Specs` / `02-Troubleshooting` / `03-Templates-Prompts`，补充 YAML 标签，清理 `00-Inbox` 收件箱，并自动执行 `git add && git commit` 推送——全程零手动操作，Git 双备份即完成。
+- 点击右上角 `Use this template` 创建私有仓库并 `git clone` 到本地；
+- 用 VS Code 打开目录，在扩展商店（`Ctrl+Shift+X`）搜索安装 **Cline** 插件并填入 API Key。
 
 ---
 
-## 进阶扩展：接入 Obsidian 实现本地语义检索与问答（向量 RAG）
+## 第二步：日常使用指南（零门槛体验）
+
+### 1. 一句话投喂与自动归档
+
+打开 Cline 对话框，直接粘贴笔记并发送 **"这是我的学习笔记，你学习一下"**（或将草稿放入 `00-Inbox/`），AI 会自动识别领域、创建子目录、补充标签、清理收件箱并自动 `git push` 双备份。
+
+### 2. 持续进化你的 AI 规则
+
+按需修改 `clinerules/brain-rules.md` 中的分类偏好与排版规范，AI 会越来越懂你的工作流。
+
+---
+
+## 第三步：进阶扩展（接入 Obsidian 实现本地语义检索与问答）
 
 当你的知识库笔记积累到数百篇以上时，可以让 **Cline（负责自动整理与写入）** 与 **Obsidian（负责可视化阅读与全库语义问答）** 协同工作：
 
@@ -62,10 +68,3 @@ AI 将自动识别笔记主题，按 SOP 自动归类到 `01-Tech-Specs` / `02-T
 
 4. **注意 `.gitignore` 防止插件缓存污染仓库**：
    - 建议将 Obsidian 自动生成的 `.obsidian/` 配置与向量缓存目录加入 `.gitignore`（或仅保留核心快捷键配置），避免每次打开 Obsidian 都产生大量无意义的 Git 变更记录。
-
----
-
-## 使用要点
-- 所有文档均为纯 Markdown，配合 Obsidian 等工具可实现语义检索与问答（RAG）。
-- 在 `clinerules/brain-rules.md` 中持续迭代你的写作偏好与归档规则，AI 越用越懂你。
-- 本模板不含任何个人业务数据，可直接公开分享，无需担心隐私泄露。
