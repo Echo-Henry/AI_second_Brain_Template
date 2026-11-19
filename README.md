@@ -22,6 +22,10 @@
 
 ## 3 分钟快速上手
 
+### 方式零：Windows 一键自动部署（推荐小白使用）
+- 下载仓库压缩包解压后，直接双击运行 `setup.bat` 即可全自动完成环境安装、插件配置与仓库初始化。脚本会自动检测并安装 Git、VS Code、Cline 插件，初始化 Git 仓库并绑定您的 GitHub 私有仓库。
+- Mac / Linux 用户请运行 `bash setup.sh`（首次使用前请确保已安装对应包管理器并执行 `chmod +x setup.sh`）。
+
 ### 1. 创建自己的私有仓库
 - **方式 A（推荐）**：直接在 GitHub 上点击仓库右上角 **`Use this template`**，创建一个新的私有仓库，选择本模板作为来源。
 - **方式 B**：克隆本模板仓库后执行 `git clone`，再 `git remote add origin <你的 GitHub 仓库地址>` 关联自己的仓库。
