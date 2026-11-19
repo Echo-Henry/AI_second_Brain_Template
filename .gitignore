@@ -1,0 +1,53 @@
+# ===== 敏感文件 / 系统缓存忽略规则 =====
+
+# 环境变量（含 API Key / Token）
+.env
+.env.*
+.env.local
+.env.production
+
+# 密钥文件
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cert
+*.ovpn
+
+# macOS 系统文件
+.DS_Store
+
+# Windows 系统文件
+Thumbs.db
+Desktop.ini
+
+# IDE 缓存
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 日志
+*.log
+logs/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# Obsidian / 工具配置
+.obsidian/
+.smart-env/
+.trash/
+
+# 本地数据库（如有）
+*.db
+*.sqlite
+*.sqlite3
+
+# 临时文件
+*.tmp
+*.bak
