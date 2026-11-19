@@ -39,6 +39,28 @@ AI 将自动识别笔记主题，按 SOP 自动归类到 `01-Tech-Specs` / `02-T
 
 ---
 
+## 进阶扩展：接入 Obsidian 实现本地语义检索与问答（向量 RAG）
+
+当你的知识库笔记积累到数百篇以上时，可以让 **Cline（负责自动整理与写入）** 与 **Obsidian（负责可视化阅读与全库语义问答）** 协同工作：
+
+1. **用 Obsidian 打开知识库目录**：
+   - 下载并打开 Obsidian，选择 **"打开本地文件夹作为仓库（Open folder as vault）"**，直接选中你克隆下来的 `AI_second_Brain_Template` 根目录（两者共用同一份 Markdown 文件，零迁移成本）。
+   - *建议设置*：在 Obsidian 设置 → `文件与链接` 中，关闭或忽略对 `clinerules` 目录的干扰，保持笔记视图清爽。
+
+2. **安装社区语义检索（RAG）插件（任选其一）**：
+   - 进入 Obsidian 设置 → `第三方插件`（关闭安全模式）→ 点击 `浏览` 搜索安装：
+     - **Smart Connections（推荐，开箱即用）**：自动对全库 Markdown 进行语义切片与本地/云端向量化（Embedding），侧边栏实时推荐"语义最相似的历史笔记"，并支持直接针对全库内容进行 RAG 问答。
+     - **Copilot for Obsidian**：支持绑定 OpenAI、DeepSeek、SiliconFlow 或本地 Ollama 模型，输入 `@vault` 即可基于整个知识库进行带引用来源的语义检索问答。
+
+3. **配置向量化（Embedding）与对话模型**：
+   - 在插件设置中填入你的大模型 API Key（或配置本地 Ollama 模型的 `nomic-embed-text` 等轻量向量模型），点击触发全库建立向量索引。
+   - 索引完成后，后续每次 Cline 自动归档新笔记并 `git push` 后，Obsidian 都会在后台自动增量更新向量坐标。
+
+4. **注意 `.gitignore` 防止插件缓存污染仓库**：
+   - 建议将 Obsidian 自动生成的 `.obsidian/` 配置与向量缓存目录加入 `.gitignore`（或仅保留核心快捷键配置），避免每次打开 Obsidian 都产生大量无意义的 Git 变更记录。
+
+---
+
 ## 使用要点
 - 所有文档均为纯 Markdown，配合 Obsidian 等工具可实现语义检索与问答（RAG）。
 - 在 `clinerules/brain-rules.md` 中持续迭代你的写作偏好与归档规则，AI 越用越懂你。
